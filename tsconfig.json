@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "lib": [ "es2020" ],
+    "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        
+    "allowJs": true,
+    "module": "commonjs",
+    "outDir": "dist",
+    "sourceMap": true,
+    "strict": true,
+    "target": "es2019"
+  },
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ],
+  "include": [
+    "src/**/*"
+  ]
+}
