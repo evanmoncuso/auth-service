@@ -6,13 +6,13 @@ const ACCESS_TOKEN_LIFESPAN = "10m"
 export interface AccessTokenPayload {
   id: string;
   username: string;
-  permissions: string[]
+  permissions: string[];
 }
 /**
  * Create a new access token based on a payload
  * @param payload - information to be stored on the access token
  */
-export function createAccessToken(payload: AccessTokenPayload) {
+export function createAccessToken(payload: AccessTokenPayload): string {
   const ACCESS_SECRET = process.env.ACCESS_TOKEN_SECRET || '';
   if (ACCESS_SECRET === '') {
     throw new Error('No access token secret provided');
@@ -20,7 +20,7 @@ export function createAccessToken(payload: AccessTokenPayload) {
 
   const token = jwt.sign(payload, ACCESS_SECRET, {
     expiresIn: ACCESS_TOKEN_LIFESPAN,
-    issuer: 'evanmoncuso.com'
+    issuer: 'evanmoncuso.com',
   });
 
   return token;

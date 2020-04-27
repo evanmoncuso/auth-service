@@ -7,53 +7,53 @@ import {
   JoinTable,
   ManyToMany,
   PrimaryGeneratedColumn,
-  UpdateDateColumn,
+  UpdateDateColumn
 } from 'typeorm';
 
 import Permission from './permission';
 
-@Entity({ name: 'users' })
+@Entity({ name: 'users', })
 export default class User extends BaseEntity {
-  @PrimaryGeneratedColumn({ name: 'user_id' })
+  @PrimaryGeneratedColumn({ name: 'user_id', })
   id!: number;
 
   @Generated('uuid')
-  @Column({ name: 'user_uuid' })
+  @Column({ name: 'user_uuid', })
   uuid!: string;
 
-  @Column({ nullable: false, unique: true })
+  @Column({ nullable: false, unique: true, })
   username!: string;
 
-  @Column({ nullable: false, select: true })
+  @Column({ nullable: false, select: true, })
   password!: string;
 
-  @Column({ name: 'first_name' })
+  @Column({ name: 'first_name', })
   firstName?: string;
 
-  @Column({ name: 'last_name' })
+  @Column({ name: 'last_name', })
   lastName?: string;
 
-  @Column({ name: 'email_address' })
+  @Column({ name: 'email_address', })
   emailAddress?: string;
 
-  @ManyToMany(type => Permission, { eager: true, cascade: true })
+  @ManyToMany(() => Permission, { eager: true, cascade: true, })
   @JoinTable({
     name: 'user_permissions',
     joinColumn: {
       name: 'user_id',
-      referencedColumnName: 'id'
+      referencedColumnName: 'id',
     },
     inverseJoinColumn: {
       name: 'permission_id',
-      referencedColumnName: 'id'
-    }
+      referencedColumnName: 'id',
+    },
   })
   permissions!: Permission[];
 
-  @CreateDateColumn({ name: 'created_at' })
+  @CreateDateColumn({ name: 'created_at', })
   createdAt!: Date;
 
-  @UpdateDateColumn({ name: 'last_updated' })
+  @UpdateDateColumn({ name: 'last_updated', })
   lastModified!: Date;
 }
 

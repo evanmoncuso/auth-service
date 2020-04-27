@@ -2,32 +2,32 @@ import * as express from 'express';
 import * as bp from 'body-parser';
 import * as cors from 'cors';
 
-import { initialize } from './data/initialize';
-import authenticate from './routes/authenticate';
-import validate from './routes/validate';
-import refresh from './routes/refresh';
+import { initializePostgres, initializeRedis } from './data/initialize';
 
+import authenticate from './routes/authenticate';
+import invalidate from './routes/invalidate';
+import refresh from './routes/refresh';
 
 const PORT = process.env.PORT;
 
-function dummyPost(req: express.Request, res: express.Response) {
-  res.sendStatus(501)
-}
-
-export default async function main() {
+export default async function main(): Promise<void> {
   try {
     if (!PORT) {
       throw new Error('No PORT specified')
     }
 
-    await initialize();
+    if (!process.env.ACCESS_TOKEN_SECRET) {
+      throw new Error('No ACCESS_TOKEN_SECRET provided');
+    }
+
+    await initializePostgres();
+    await initializeRedis();
 
     const app = express();
 
     // Setup app usables
     app.use(cors());
-
-    app.use(bp.urlencoded({ extended: false }));
+    app.use(bp.urlencoded({ extended: false, }));
     app.use(bp.text());
 
     app.use(bp.json({
@@ -48,10 +48,9 @@ export default async function main() {
     });
 
     app.post('/authenticate', authenticate);
-    app.post('/invalidate', dummyPost);
-    app.post('/refresh', refresh);
-    app.post('/validate', validate);
+    app.post('/invalidate', invalidate);
 
+    app.post('/refresh', refresh);
 
     app.listen(PORT, () => {
       console.log(`listening on port: ${PORT}`);

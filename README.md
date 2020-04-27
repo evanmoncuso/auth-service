@@ -24,12 +24,36 @@ This purpose of this service is to authenticate users against the user database.
 ### POST :: `/authenticate`
 Provide a username and password for a user, receive an authentication token (in the form of a JWT) back
 
-### POST :: `/validate`
-Get a new `access token` by checking a `refresh token`
 
 ### POST :: `/invalidate`
 Provide a refresh token and invalidate that `refresh token`. Destroying that token's usefulness
 
+```json
+  // request body
+  {
+    "refresh_token": "<string>",
+  }
+
+  // response body
+  // none - 204 RESPONSE CODE
+```
+
 ### POST :: `/refresh`
-Provide a token and 
+Provide a refresh_token and get back a new access_token if everything is okay
+
+
+```json
+  // request body
+  {
+    "refresh_token": "<original-refresh-token>", 
+  }
+
+  // response body
+  {
+    "access_token": "<new-access-token>",
+    "refresh_token": "<original-refresh-token>"
+  }
+```
+
 ## JWT
+The JWT contains certain information about the user

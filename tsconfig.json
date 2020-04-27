@@ -2,9 +2,8 @@
   "compilerOptions": {
     "lib": [ "es2020" ],
     "moduleResolution": "node",
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "allowJs": true,
     "module": "commonjs",
     "outDir": "dist",

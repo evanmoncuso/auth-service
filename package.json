@@ -1,7 +1,7 @@
 {
-  "name": "ts-starter",
-  "version": "1.0.0",
-  "description": "A Typescript starter pack for node projects",
+  "name": "authentication-service",
+  "version": "0.1.0",
+  "description": "Service for authenticating requests with JWTs",
   "main": "src/app.ts",
   "author": "Evan Moncuso",
   "license": "MIT",
@@ -13,12 +13,13 @@
   "scripts": {
     "build": "tsc",
     "build:dev": "tsc -w",
+    "build:docker": "docker build --tag evanmoncuso/authentication-service .",
     "develop": "source .private/local.sh && concurrently \"yarn run build:dev\" \"yarn run start:dev\"",
-    "start": "node app.js",
+    "start": "node dist/app.js",
     "start:dev": "nodemon dist/app.js",
     "test": "yarn run test:lint && yarn run test:jest",
     "test:jest": "jest",
-    "test:lint": "tslint -c tslint.json 'src/**/*.ts'"
+    "test:lint": "eslint . --ext .js,.ts"
   },
   "dependencies": {
     "bcrypt": "^4.0.1",
@@ -27,11 +28,13 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.0.2",
+    "redis": "^3.0.2",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.2.24"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
     "@babel/preset-typescript": "^7.9.0",
     "@types/bcrypt": "^3.0.0",
@@ -41,10 +44,14 @@
     "@types/jest": "^25.1.4",
     "@types/jsonwebtoken": "^8.3.9",
     "@types/node": "~13.9.0",
+    "@types/redis": "^2.8.17",
+    "@typescript-eslint/eslint-plugin": "^2.29.0",
+    "@typescript-eslint/parser": "^2.29.0",
     "concurrently": "^5.1.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-jest": "^23.8.2",
     "jest": "^25.2.4",
     "nodemon": "~2.0.2",
-    "tslint": "^6.1.0",
     "typescript": "^3.8.3"
   },
   "engines": {
