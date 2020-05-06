@@ -42,6 +42,7 @@ export default async function(req: Request, res: Response): Promise<void> {
     const refreshToken = createRefreshToken(tokenUserInfo);
 
     res.status(200).send({
+      user_uuid: record.uuid,
       access_token: accessToken,
       refresh_token: refreshToken,
     });

@@ -21,7 +21,7 @@ export async function initializePostgres(): Promise<void> {
       ],
       logging: environment === 'development' ? true : false,
       ssl: {
-        rejectUnauthorized: environment === 'production' ? true : false,
+        rejectUnauthorized: false,
       },
     });
   } else {
