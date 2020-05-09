@@ -57,9 +57,10 @@ export default async function(req: Request, res: Response): Promise<void> {
     }
 
     res.send({
-      accessToken: createAccessToken(tokenUserInfo),
+      user_uuid: record.uuid,
+      access_token: createAccessToken(tokenUserInfo),
       refresh_token,
-    })
+    });
   } catch(e) {
     res.status(500).send({ error: e || 'something went wrong...', })
   }
