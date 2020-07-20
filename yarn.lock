@@ -813,13 +813,6 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@evanmoncuso/token-auth-middleware@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@evanmoncuso/token-auth-middleware/-/token-auth-middleware-0.3.0.tgz#2f71fb3206bc6f6e9320e52047bdec2b956b61bc"
-  integrity sha512-c533Lih2Nv1Ky3y2Nohz4cI6h0JdpXbp0p98Ay5MLUbNg6aCb88VFkAE2mMW2pxmNOIzwjh0IWaqaPT/tygp6w==
-  dependencies:
-    jsonwebtoken "^8.5.1"
-
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@istanbuljs/load-nyc-config/-/load-nyc-config-1.0.0.tgz#10602de5570baea82f8afbfa2630b24e7a8cfe5b"
@@ -4034,9 +4027,9 @@ lodash.sortby@^4.7.0:
   integrity sha1-7dFMgk4sycHgsKG0K7UhBRakJDg=
 
 lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15:
-  version "4.17.15"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
-  integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
+  version "4.17.19"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.19.tgz#e48ddedbe30b3321783c5b4301fbd353bc1e4a4b"
+  integrity sha512-JNvd8XER9GQX0v2qJgsaN/mzFCNA5BRe/j8JN9d+tWyGLSodKQHKFicdwNYzWwI3wjRnaKPsGj1XkBjx/F96DQ==
 
 lolex@^5.0.0:
   version "5.1.2"
